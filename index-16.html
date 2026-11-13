@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5c842">
+  <meta name="description" content="Pustaka Cakrawala — Membuka Wawasan, Menjelajahi Masa Depan.">
+  <title>Pustaka Cakrawala | SMA Antartika Sidoarjo</title>
+  <style>
+    :root {
+      --yellow: #f5c842;
+      --yellow-light: #fff5cc;
+      --ink: #202020;
+      --muted: #666;
+      --paper: #fffdf7;
+      --white: #fff;
+      --line: #eee5c9;
+      --shadow: 0 16px 45px rgba(48, 39, 8, .10);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1100px, 90%); margin: auto; }
+    .navbar {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(255,253,247,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(238,229,201,.8);
+    }
+    .nav-inner {
+      min-height: 72px; display: flex; align-items: center;
+      justify-content: space-between; gap: 20px;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .3px; }
+    .brand-mark {
+      width: 39px; height: 39px; display: grid; place-items: center;
+      background: var(--yellow); border-radius: 12px; font-size: 20px;
+    }
+    .nav-links { display: flex; gap: 25px; align-items: center; font-size: 14px; font-weight: 700; }
+    .nav-links a { color: #4b4638; transition: color .2s; }
+    .nav-links a:hover { color: #b18100; }
+    .menu-btn { display: none; border: 0; background: var(--yellow-light); padding: 9px 12px; border-radius: 10px; font-size: 20px; }
+    .hero { padding: 82px 0 70px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .eyebrow {
+      display: inline-block; padding: 7px 13px; border-radius: 30px;
+      background: var(--yellow-light); color: #806000; font-size: 12px;
+      font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    h1 { font-size: clamp(42px, 6vw, 70px); line-height: 1.04; letter-spacing: -2.5px; margin-bottom: 18px; }
+    h1 span { color: #c18e00; }
+    .hero p { max-width: 510px; color: var(--muted); font-size: 17px; margin-bottom: 27px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--ink); color: var(--white); padding: 13px 21px;
+      border-radius: 12px; font-weight: 700; transition: transform .2s, background .2s;
+    }
+    .btn:hover { transform: translateY(-3px); background: #444; }
+    .hero-visual { position: relative; }
+    .hero-visual::before {
+      content: ""; position: absolute; width: 78%; height: 78%;
+      right: -20px; top: -20px; background: var(--yellow-light);
+      border-radius: 35px; transform: rotate(5deg);
+    }
+    .hero-photo {
+      position: relative; width: 100%; height: 360px; object-fit: cover;
+      border-radius: 28px; box-shadow: var(--shadow); cursor: pointer;
+      border: 7px solid white; transition: transform .25s;
+    }
+    .hero-photo:hover { transform: scale(1.015); }
+    .photo-hint { position: relative; text-align: center; color: var(--muted); font-size: 12px; margin-top: 10px; }
+    section { padding: 76px 0; }
+    .section-head { text-align: center; max-width: 650px; margin: 0 auto 38px; }
+    .section-head .eyebrow { margin-bottom: 12px; }
+    h2 { font-size: clamp(28px, 4vw, 40px); line-height: 1.2; margin-bottom: 12px; letter-spacing: -.8px; }
+    .section-head p { color: var(--muted); }
+    .about-card {
+      background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 34px; box-shadow: var(--shadow); max-width: 850px; margin: auto; text-align: center;
+    }
+    .about-card p { color: var(--muted); font-size: 16px; }
+    .yellow-band { background: var(--yellow-light); }
+    .rules-grid, .benefit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .info-card {
+      background: white; border: 1px solid var(--line); border-radius: 18px;
+      padding: 24px; transition: transform .2s, box-shadow .2s;
+    }
+    .info-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .icon {
+      width: 47px; height: 47px; display: grid; place-items: center;
+      background: var(--yellow-light); border-radius: 14px; font-size: 23px; margin-bottom: 15px;
+    }
+    .info-card h3 { font-size: 18px; margin-bottom: 7px; }
+    .info-card p { color: var(--muted); font-size: 14px; }
+    .gallery-wrap {
+      display: grid; grid-template-columns: 1.15fr .85fr; gap: 25px; align-items: center;
+    }
+    .gallery-main {
+      background: white; padding: 12px; border: 1px solid var(--line);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+    }
+    .gallery-main img {
+      display: block; width: 100%; height: 390px; object-fit: cover;
+      border-radius: 15px; cursor: pointer; transition: opacity .2s;
+    }
+    .gallery-copy h3 { font-size: 25px; margin-bottom: 10px; }
+    .gallery-copy p { color: var(--muted); margin-bottom: 16px; }
+    .switch-note { font-size: 13px; color: #8b6a00; background: var(--yellow-light); padding: 12px 14px; border-radius: 12px; }
+    .team-card {
+      max-width: 850px; margin: auto; background: white; padding: 12px;
+      border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow);
+    }
+    .team-card img { width: 100%; display: block; max-height: 500px; object-fit: contain; border-radius: 14px; background: #f7f3e8; }
+    .team-caption { text-align: center; padding: 18px 8px 8px; }
+    .team-caption h3 { font-size: 20px; }
+    .team-caption p { color: var(--muted); font-size: 14px; }
+    footer { background: #202020; color: white; padding: 35px 0; text-align: center; }
+    footer strong { color: var(--yellow); }
+    footer p { color: #c9c9c9; font-size: 13px; margin-top: 5px; }
+    .fade-up { opacity: 0; transform: translateY(18px); transition: opacity .7s, transform .7s; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 760px) {
+      .nav-inner { min-height: 64px; }
+      .menu-btn { display: block; }
+      .nav-links {
+        display: none; position: absolute; top: 64px; left: 0; right: 0;
+        background: var(--paper); padding: 18px 5%; border-bottom: 1px solid var(--line);
+        flex-direction: column; align-items: flex-start; gap: 14px;
+      }
+      .nav-links.open { display: flex; }
+      .hero { padding: 55px 0; }
+      .hero-grid, .gallery-wrap { grid-template-columns: 1fr; gap: 30px; }
+      .hero-photo { height: 270px; }
+      section { padding: 58px 0; }
+      .rules-grid, .benefit-grid { grid-template-columns: 1fr; }
+      .about-card { padding: 25px 20px; }
+      .gallery-main img { height: 270px; }
+      h1 { letter-spacing: -1.5px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#beranda">
+        <span class="brand-mark">📚</span>
+        <span>PUSTAKA CAKRAWALA</span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-label="Buka navigasi">☰</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="#tentang">Tentang</a>
+        <a href="#tata-tertib">Tata Tertib</a>
+        <a href="#manfaat">Manfaat</a>
+        <a href="#maket">Maket</a>
+        <a href="#dokumentasi">Dokumentasi</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="beranda">
+      <div class="container hero-grid">
+        <div class="fade-up">
+          <span class="eyebrow">Ruang Literasi & Inspirasi</span>
+          <h1>PUSTAKA <span>CAKRAWALA</span></h1>
+          <p><strong>Membuka Wawasan, Menjelajahi Masa Depan.</strong><br>
+            Ruang untuk membaca, belajar, menemukan gagasan, dan mengembangkan potensi diri melalui ilmu pengetahuan.</p>
+          <a class="btn" href="#tentang">Jelajahi Perpustakaan&nbsp; →</a>
+        </div>
+        <div class="hero-visual fade-up">
+          <img class="hero-photo" id="heroPhoto"
+            src="https://raw.githubusercontent.com/redbals359-cyber/Pusaka-cakrawala/main/Maket%20Perpustakaan.jpg"
+            alt="Maket Pustaka Cakrawala" title="Tekan gambar untuk mengganti foto maket">
+          <div class="photo-hint">Tekan gambar untuk melihat sisi maket lainnya</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tentang">
+      <div class="container">
+        <div class="section-head fade-up">
+          <span class="eyebrow">Tentang Kami</span>
+          <h2>Lebih dari Sekadar Tempat Membaca</h2>
+          <p>Mengenal gagasan di balik Pustaka Cakrawala.</p>
+        </div>
+        <div class="about-card fade-up">
+          <p><strong>Pustaka Cakrawala</strong> merupakan konsep perpustakaan yang dirancang sebagai ruang belajar dan pengembangan wawasan bagi siswa. Nama “Pustaka” melambangkan sumber ilmu pengetahuan, sedangkan “Cakrawala” menggambarkan luasnya wawasan dan kesempatan. Perpustakaan diharapkan menjadi tempat yang nyaman untuk membaca, mencari informasi, berdiskusi, dan menumbuhkan budaya literasi.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="yellow-band" id="tata-tertib">
+      <div class="container">
+        <div class="section-head fade-up">
+          <span class="eyebrow">Aturan Pengunjung</span>
+          <h2>Tata Tertib Perpustakaan</h2>
+          <p>Jaga kenyamanan bersama agar kegiatan membaca dan belajar berjalan dengan baik.</p>
+        </div>
+        <div class="rules-grid">
+          <article class="info-card fade-up"><div class="icon">🤫</div><h3>Jaga Ketenangan</h3><p>Berbicara dengan suara pelan dan tidak membuat keributan di area perpustakaan.</p></article>
+          <article class="info-card fade-up"><div class="icon">📖</div><h3>Rawat Buku</h3><p>Gunakan buku dengan hati-hati. Jangan mencoret, melipat, atau merusak halaman.</p></article>
+          <article class="info-card fade-up"><div class="icon">↩️</div><h3>Kembalikan pada Tempatnya</h3><p>Letakkan kembali buku sesuai tempat atau arahan petugas setelah digunakan.</p></article>
+          <article class="info-card fade-up"><div class="icon">🧹</div><h3>Jaga Kebersihan</h3><p>Buang sampah pada tempatnya dan pastikan meja baca tetap rapi.</p></article>
+          <article class="info-card fade-up"><div class="icon">📱</div><h3>Gunakan Gawai dengan Bijak</h3><p>Atur ponsel dalam mode senyap dan gunakan untuk kegiatan belajar.</p></article>
+          <article class="info-card fade-up"><div class="icon">🤝</div><h3>Hormati Pengunjung</h3><p>Saling menghargai, antre dengan tertib, dan tidak mengganggu orang lain.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="manfaat">
+      <div class="container">
+        <div class="section-head fade-up">
+          <span class="eyebrow">Mengapa Perpustakaan Penting?</span>
+          <h2>Manfaat Perpustakaan</h2>
+          <p>Perpustakaan mendukung proses belajar, baik di dalam maupun di luar kelas.</p>
+        </div>
+        <div class="benefit-grid">
+          <article class="info-card fade-up"><div class="icon">🧠</div><h3>Menambah Pengetahuan</h3><p>Membantu siswa memperoleh informasi dan memperluas wawasan dari berbagai bidang.</p></article>
+          <article class="info-card fade-up"><div class="icon">🔎</div><h3>Melatih Berpikir Kritis</h3><p>Mendorong siswa membandingkan informasi, memahami bacaan, dan menyusun pendapat.</p></article>
+          <article class="info-card fade-up"><div class="icon">✍️</div><h3>Meningkatkan Literasi</h3><p>Membiasakan kegiatan membaca serta membantu mengembangkan kemampuan berbahasa.</p></article>
+          <article class="info-card fade-up"><div class="icon">🎯</div><h3>Mendukung Prestasi</h3><p>Menyediakan sumber belajar tambahan untuk menunjang tugas dan kegiatan akademik.</p></article>
+          <article class="info-card fade-up"><div class="icon">🌱</div><h3>Mengembangkan Diri</h3><p>Membuka kesempatan untuk mengenali minat, bakat, dan keterampilan baru.</p></article>
+          <article class="info-card fade-up"><div class="icon">💡</div><h3>Menumbuhkan Kreativitas</h3><p>Memberikan inspirasi dan ide baru melalui beragam bahan bacaan.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="yellow-band" id="maket">
+      <div class="container gallery-wrap">
+        <div class="gallery-main fade-up">
+          <img id="maketPhoto"
+            src="https://raw.githubusercontent.com/redbals359-cyber/Pusaka-cakrawala/main/Maket%20Perpustakaan.jpg"
+            alt="Foto maket perpustakaan" title="Tekan untuk berpindah ke foto maket berikutnya">
+        </div>
+        <div class="gallery-copy fade-up">
+          <span class="eyebrow">Galeri Maket</span>
+          <h3>Rancangan Pustaka Cakrawala</h3>
+          <p>Inilah maket perpustakaan yang dibuat oleh kelompok XI-12. Tekan foto untuk berganti ke sudut pandang lainnya. Tekan kembali untuk kembali ke foto sebelumnya.</p>
+          <div class="switch-note">↔ Foto dapat ditekan untuk berpindah secara bergantian.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="dokumentasi">
+      <div class="container">
+        <div class="section-head fade-up">
+          <span class="eyebrow">Di Balik Proyek</span>
+          <h2>Dokumentasi Kelompok</h2>
+          <p>Proses dan kebersamaan kelompok dalam mengerjakan maket perpustakaan.</p>
+        </div>
+        <div class="team-card fade-up">
+          <img
+            src="https://raw.githubusercontent.com/redbals359-cyber/Pusaka-cakrawala/main/XI-12%20Team.jpg"
+            alt="Dokumentasi kelompok Maket Perpustakaan XI-12">
+          <div class="team-caption">
+            <h3>MAKET PERPUSTAKAAN XI-12</h3>
+            <p>SMA Antartika Sidoarjo</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>PUSTAKA CAKRAWALA</strong>
+      <p>Membuka Wawasan, Menjelajahi Masa Depan.</p>
+      <p>Proyek Maket Perpustakaan XI-12 · SMA Antartika Sidoarjo</p>
+    </div>
+  </footer>
+
+  <script>
+    const maketImages = [
+      "https://raw.githubusercontent.com/redbals359-cyber/Pusaka-cakrawala/main/Maket%20Perpustakaan.jpg",
+      "https://raw.githubusercontent.com/redbals359-cyber/Pusaka-cakrawala/main/Maket%20Perpustakaan2.jpg"
+    ];
+    let currentImage = 0;
+
+    function switchMaketImage() {
+      currentImage = (currentImage + 1) % maketImages.length;
+      const heroPhoto = document.getElementById("heroPhoto");
+      const maketPhoto = document.getElementById("maketPhoto");
+      heroPhoto.src = maketImages[currentImage];
+      maketPhoto.src = maketImages[currentImage];
+    }
+
+    document.getElementById("heroPhoto").addEventListener("click", switchMaketImage);
+    document.getElementById("maketPhoto").addEventListener("click", switchMaketImage);
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+    menuBtn.addEventListener("click", () => navLinks.classList.toggle("open"));
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => navLinks.classList.remove("open"));
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
